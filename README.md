@@ -1,42 +1,40 @@
-# 🛡️ PhishGuard - Anti-Phishing Firefox Extension
+<img src="artemis-project-cover.svg" alt="PhisGuard - Early prototype" width="100%" />
 
-**A browser extension that detects and blocks malicious/phishing websites in real-time using Google Safe Browsing and heuristic analysis.**
+# PhishGuard Browser Extension Prototype
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![Firefox Add-on](https://img.shields.io/amo/v/phishguard?color=blue)](https://addons.mozilla.org/firefox/addon/phishguard/)
+A browser-extension learning project exploring URL reputation checks and warning interfaces for potentially suspicious pages.
 
----
+The repository name is **PhisGuard**; the extension manifest uses **PhishGuard**.
 
-## Table of Contents
-- [Features](#features)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Usage](#usage)
-- [Build from Source](#build-from-source)
-- [Contributing](#contributing)
-- [License](#license)
-- [Acknowledgments](#acknowledgments)
-- [FAQ](#faq)
+**Status:** incomplete prototype. It is not presented as a verified protective product or a published Firefox add-on.
 
----
+## What is implemented
 
-## Features
-- **Real-time URL scanning** using Google Safe Browsing API.
-- **Heuristic detection** of phishing indicators (e.g., fake login forms, typosquatting).
-- **Active monitoring** of web requests and page content.
-- **User-friendly warnings** with options to proceed or block.
-- **Open-source** and privacy-focused (no data collection).
+- A Manifest V3 extension declaration.
+- A background script containing a Google Safe Browsing request.
+- A content-script heuristic that examines a page's input fields and hostname.
+- Popup and blocked-page interface files.
 
----
+## Source map
 
-## Installation
+| File | Role |
+| --- | --- |
+| `manifest.json` | Permissions and extension components |
+| `background.js` | URL-reputation request and tab handling |
+| `content.js` | Experimental page heuristic |
+| `popup.html` | Popup interface |
+| `blocked.html` and `blocked.js` | Warning and continuation interface |
 
-### Prerequisites
-- Firefox browser (latest version).
-- [Google Safe Browsing API Key](https://developers.google.com/safe-browsing) (free tier).
+## Current limitations
 
-### Steps
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/yourusername/phishguard.git
-   cd phishguard
+The manifest references icon files that are not included. The warning-message and continuation paths also need integration work, and Firefox compatibility has not been verified in this snapshot. The hostname heuristic is simplistic and should not be treated as reliable phishing detection.
+
+URL-reputation checks can transmit visited URLs to the external provider. The project therefore does not claim that no browsing information leaves the browser.
+
+## Development priorities
+
+Complete the missing assets, test browser compatibility, make the warning flow consistent and evaluate detection behaviour against synthetic fixtures. A marketplace listing, a release package and an automated test suite have not been established by this repository.
+
+## Reuse
+
+No repository-wide licence file or verified marketplace release is documented in this snapshot.
